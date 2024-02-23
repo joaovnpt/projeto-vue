@@ -1,47 +1,45 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue'
+
+const contador = ref(0)
+
+function decrementar() {
+  contador.value--
+}
+function reset() {
+  contador.value = 0;
+}
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="container">
+  <button @click='contador++'>+</button>
+  <p>{{ contador }}</p>
+  <button @click="decrementar()">-</button>
+  <button @click="reset()">C</button>
+</div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
+  button {
+    font-size: 2rem;
+    padding: 1rem;
+    margin: 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: rgb(255, 251, 199);
+    border-radius: 0.5rem;
+    transition: 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  button:hover {
+    background-color: rgb(101, 136, 211);
+  }
+  .container {
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    justify-content: center;
+    align-items: center;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
+  p {
+    font-size: 2rem;
   }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
