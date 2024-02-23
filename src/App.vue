@@ -5,6 +5,9 @@ const contador = ref(0)
 
 function decrementar() {
   contador.value--
+  if (contador.value < 0) {
+  contador.value = 0;
+}
 }
 function reset() {
   contador.value = 0;
